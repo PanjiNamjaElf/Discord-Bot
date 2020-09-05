@@ -55,6 +55,21 @@ client.on('ready', function () {
         channel.setParent(categoryId)
       })
   })
+
+  command(client, 'CreateVoiceChannel', (message) => {
+    const name = message.content.replace('!CreateVoiceChannel', '')
+
+    message.guild.channels
+      .create(name, {
+        type: 'voice',
+      })
+      .then((channel) => {
+        const categoryId = '745311804468494426'
+
+        channel.setParent(categoryId)
+        channel.setUserLimit(10)
+      })
+  })
 })
 
 client.login(config.token)
