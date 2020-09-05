@@ -41,6 +41,20 @@ client.on('ready', function () {
   })
 
   privateMessage(client, 'ping', 'Pong!')
+
+  command(client, 'CreateTextChannel', (message) => {
+    const name = message.content.replace('!CreateTextChannel', '')
+
+    message.guild.channels
+      .create(name, {
+        type: 'text',
+      })
+      .then((channel) => {
+        const categoryId = '745311804468494426'
+
+        channel.setParent(categoryId)
+      })
+  })
 })
 
 client.login(config.token)
