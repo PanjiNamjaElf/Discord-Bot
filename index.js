@@ -26,6 +26,17 @@ client.on('ready', function () {
       })
     }
   })
+
+  command(client, 'status', (message) => {
+    const content = message.content.replace('!status ', '')
+
+    client.user.setPresence({
+      activity: {
+        name: content,
+        type: 'WATCHING',
+      },
+    })
+  })
 })
 
 client.login(config.token)
