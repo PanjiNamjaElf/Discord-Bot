@@ -10,6 +10,12 @@ client.on('ready', function () {
   command(client, 'ping', (message) => {
     message.channel.send('Pong!')
   })
+
+  command(client, 'servers', (message) => {
+    client.guilds.cache.forEach((guild) => {
+      console.log(guild)
+    })
+  })
 })
 
 client.login(config.token);
