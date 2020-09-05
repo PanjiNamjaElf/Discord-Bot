@@ -13,7 +13,9 @@ client.on('ready', function () {
 
   command(client, 'servers', (message) => {
     client.guilds.cache.forEach((guild) => {
-      console.log(guild)
+      message.channel.send(
+        `${guild.name} has a total of ${guild.memberCount} members`
+      )
     })
   })
 })
