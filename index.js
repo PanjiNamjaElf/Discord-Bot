@@ -70,6 +70,42 @@ client.on('ready', function () {
         channel.setUserLimit(10)
       })
   })
+
+  command(client, 'embed', (message) => {
+    const logo = 'https://cdn.weeb.sh/images/rJgTQ1tvb.gif'
+
+    const embed = new Discord.MessageEmbed()
+      .setTitle('Example text embed')
+      .setURL('https://cdn.weeb.sh/images/rJgTQ1tvb.gif')
+      .setAuthor(message.author.username)
+      .setImage(logo)
+      .setThumbnail(logo)
+      .setFooter('This is a footer', logo)
+      .setColor('#00AAFF')
+      .addFields(
+        {
+          name: 'Field 1',
+          value: 'Hello Captain!',
+          inline: true,
+        },
+        {
+          name: 'Field 2',
+          value: 'Hello Captain!',
+          inline: true,
+        },
+        {
+          name: 'Field 3',
+          value: 'Hello Captain!',
+          inline: true,
+        },
+        {
+          name: 'Field 4',
+          value: 'Hello Captain!',
+        }
+      )
+
+    message.channel.send(embed)
+  })
 })
 
 client.login(config.token)
