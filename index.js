@@ -4,6 +4,7 @@ const config = require('./config.json')
 
 const command = require('./commands/command')
 const message = require('./components/message')
+const privateMessage = require('./components/private-message')
 
 client.on('ready', function () {
   console.log(`${client.user.username} is ready!`)
@@ -39,7 +40,11 @@ client.on('ready', function () {
     })
   })
 
-  message(client, '751039004631367681', 'Hello World!!!', ['🧯'])
+  privateMessage(client, 'ping', 'Pong!')
+
+  client.users.fetch('650311336085159947').then((user) => {
+    user.send('Hello Captain!')
+  })
 })
 
 client.login(config.token)
