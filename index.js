@@ -41,10 +41,6 @@ client.on('ready', function () {
   })
 
   privateMessage(client, 'ping', 'Pong!')
-
-  client.users.fetch('650311336085159947').then((user) => {
-    user.send('Hello Captain!')
-  })
 })
 
 client.login(config.token)
