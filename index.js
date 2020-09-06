@@ -9,9 +9,13 @@ const roleClaim = require('./components/role-claim')
 const poll = require('./components/poll')
 const welcome = require('./components/welcome')
 const memberCount = require('./components/member-count')
+const sendMessage = require('./components/send-message')
 
 client.on('ready', function () {
   console.log(`${client.user.username} is ready!`)
+
+  const guild = client.guilds.cache.get('745291969500283021')
+  const channel = guild.channels.cache.get('751039004631367681')
 
   command(client, 'ping', (message) => {
     message.channel.send('Pong!')
@@ -199,6 +203,8 @@ client.on('ready', function () {
   welcome(client)
 
   memberCount(client)
+
+  // sendMessage(channel, 'Hello world', 5)
 })
 
 client.login(config.token)
