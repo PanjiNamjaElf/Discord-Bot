@@ -196,3 +196,4 @@ client.on('ready', function () {
 })
 
 client.login(config.token)
+client.setMaxListeners(0)
