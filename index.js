@@ -6,6 +6,7 @@ const command = require('./components/command')
 const message = require('./components/message')
 const privateMessage = require('./components/private-message')
 const roleClaim = require('./components/role-claim')
+const poll = require('./components/poll')
 
 client.on('ready', function () {
   console.log(`${client.user.username} is ready!`)
@@ -190,6 +191,8 @@ client.on('ready', function () {
       )
     }
   })
+
+  poll(client)
 })
 
 client.login(config.token)
