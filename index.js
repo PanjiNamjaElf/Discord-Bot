@@ -138,8 +138,6 @@ client.on('ready', function () {
 
     message.channel.send(embed)
   })
-
-  roleClaim(client)
 })
 
 client.login(config.token)
