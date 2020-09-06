@@ -106,6 +106,17 @@ client.on('ready', function () {
 
     message.channel.send(embed)
   })
+
+  command(client, 'serverinfo', (message) => {
+    const { guild } = message
+
+    const { name, region, memberCount, owner } = guild
+    const icon = guild.iconURL()
+
+    console.log(name, region, memberCount, icon)
+
+    console.log(owner.user.tag)
+  })
 })
 
 client.login(config.token)
