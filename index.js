@@ -192,7 +192,7 @@ client.on('ready', function () {
     }
   })
 
-  poll(client)
+  // poll(client)
 })
 
 client.login(config.token)
