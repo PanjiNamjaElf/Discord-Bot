@@ -5,6 +5,7 @@ const config = require('./config.json')
 const command = require('./commands/command')
 const message = require('./components/message')
 const privateMessage = require('./components/private-message')
+const roleClaim = require('./components/role-claim')
 
 client.on('ready', function () {
   console.log(`${client.user.username} is ready!`)
@@ -137,6 +138,8 @@ client.on('ready', function () {
 
     message.channel.send(embed)
   })
+
+  roleClaim(client)
 })
 
 client.login(config.token)
