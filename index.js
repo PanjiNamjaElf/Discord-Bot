@@ -8,6 +8,7 @@ const privateMessage = require('./components/private-message')
 const roleClaim = require('./components/role-claim')
 const poll = require('./components/poll')
 const welcome = require('./components/welcome')
+const memberCount = require('./components/member-count')
 
 client.on('ready', function () {
   console.log(`${client.user.username} is ready!`)
@@ -196,6 +197,8 @@ client.on('ready', function () {
   // poll(client)
 
   welcome(client)
+
+  memberCount(client)
 })
 
 client.login(config.token)
