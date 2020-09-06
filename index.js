@@ -2,7 +2,7 @@ const Discord = require('discord.js')
 const client = new Discord.Client()
 const config = require('./config.json')
 
-const command = require('./commands/command')
+const command = require('./components/command')
 const message = require('./components/message')
 const privateMessage = require('./components/private-message')
 const roleClaim = require('./components/role-claim')
