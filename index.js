@@ -11,6 +11,7 @@ const welcome = require('./components/welcome')
 const memberCount = require('./components/member-count')
 const sendMessage = require('./components/send-message')
 const mongo = require('./components/mongo')
+const welcomeMongo = require('./components/welcome-mongo')
 
 client.on('ready', async function () {
   console.log(`${client.user.username} is ready!`)
@@ -206,6 +207,8 @@ client.on('ready', async function () {
   memberCount(client)
 
   // sendMessage(channel, 'Hello world', 5)
+
+  welcomeMongo(client)
 })
 
 client.login(config.token)
