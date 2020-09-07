@@ -206,16 +206,6 @@ client.on('ready', async function () {
   memberCount(client)
 
   // sendMessage(channel, 'Hello world', 5)
-
-  await mongo().then(mongoose => {
-    try {
-     console.log('Connected to mongo!')
-    } catch (e) {
-
-    } finally {
-      mongoose.connection.close()
-    }
-  })
 })
 
 client.login(config.token)
