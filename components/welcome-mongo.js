@@ -3,6 +3,8 @@ const command = require('./command')
 const welcomeSchema = require('../schemas/welcome-schema')
 
 module.exports = (client) => {
+  const cache = {}
+
   command(client, 'setwelcome', async (message) => {
     const { member, channel, content, guild } = message
 
@@ -26,6 +28,8 @@ module.exports = (client) => {
 
     text = split.join(' ')
 
+    cache[guild.id] = [channel.id, text]
+
     await mongo().then(async (mongoose) => {
       try {
         await welcomeSchema.findOneAndUpdate({
@@ -41,5 +45,44 @@ module.exports = (client) => {
         mongoose.connection.close()
       }
     })
+  })
+
+  const onJoin = async (member) => {
+    const { guild } = member
+
+    let data = cache[guild.id]
+
+    if (!data) {
+      console.log('Fetching From Database...')
+
+      await mongo().then(async (mongoose) => {
+        try {
+          const result = await welcomeSchema.findOne({
+            _id: guild.id
+          })
+
+          cache[guild.id] = data = [
+            result.channelId,
+            result.text,
+          ]
+        } finally {
+          mongoose.connection.close()
+        }
+      })
+    }
+
+    const channelId = data[0]
+    const text = data[1]
+    const channel = guild.channels.cache.get(channelId)
+
+    channel.send(text.replace(/<@>/g, `<@${member.id}>`))
+  }
+
+  command(client, 'simjoin', message => {
+    onJoin(message.member)
+  })
+
+  client.on('guildMemberAdd', member => {
+    onJoin(member)
   })
 }
