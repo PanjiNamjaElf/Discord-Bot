@@ -14,6 +14,7 @@ const mongo = require('./components/mongo')
 const welcomeMongo = require('./components/welcome-mongo')
 const messageCounter = require('./components/message-counter')
 const mute = require('./components/mute')
+const eval = require('./components/eval')
 
 client.on('ready', async function () {
   console.log(`${client.user.username} is ready!`)
@@ -215,6 +216,8 @@ client.on('ready', async function () {
   messageCounter(client)
 
   mute(client)
+
+  eval(client)
 })
 
 client.login(config.token)
