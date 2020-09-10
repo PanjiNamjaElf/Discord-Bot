@@ -5,8 +5,12 @@ const Discord = require('discord.js')
 const client = new Discord.Client()
 const config = require('./config.json')
 
+const antiAd = require('./components/anti-ad')
+
 client.on('ready', async function () {
   console.log(`${client.user.username} is ready!`)
+
+  antiAd(client)
 
   const baseFile = 'command-base.js'
   const commandBase = require(`./commands/${baseFile}`)
