@@ -6,11 +6,13 @@ const client = new Discord.Client()
 const config = require('./config.json')
 
 const antiAd = require('./components/anti-ad')
+const inviteNotifications = require('./components/invite-notifications')
 
 client.on('ready', async function () {
   console.log(`${client.user.username} is ready!`)
 
   antiAd(client)
+  inviteNotifications(client)
 
   const baseFile = 'command-base.js'
   const commandBase = require(`./commands/${baseFile}`)
